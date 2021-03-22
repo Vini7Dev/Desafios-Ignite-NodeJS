@@ -1,0 +1,134 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Atlas",
+        "description": "Essa é uma documentação sobre a Atlas API",
+        "version": "1.0.0",
+        "contact": {
+            "email": "viniciusgabriel.pb@gmail.com"
+        }
+    },
+    "paths": {
+        "/users": {
+            "post": {
+                "tags": ["Users"],
+                "summary": "Create a new user",
+                "description": "Create a new user",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "name": "Rocketseat",
+                                    "email": "oi@rocketseat.com.br"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "user email already exits."
+                    }
+                }
+            },
+            "get": {
+                "tags": ["Users"],
+                "summary": "List users",
+                "description": "List users",
+                "requestHeaders": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "user_id": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Created"
+                    },
+                    "400": {
+                        "description": "permission denied."
+                    }
+                }
+            }
+        },
+        "/users/{user_id}": {
+            "post": {
+                "tags": ["Users"],
+                "summary": "Get a specifc user",
+                "description": "Get a specifc user",
+                "requestParams": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "user_id": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "User finded"
+                    },
+                    "400": {
+                        "description": "user does not exits."
+                    }
+                }
+            }
+        },
+        "/users/{user_id}/admin": {
+            "post": {
+                "tags": ["Users"],
+                "summary": "Turn user as admin",
+                "description": "Turn user as admin",
+                "requestParams": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "user_id": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "User finded"
+                    },
+                    "400": {
+                        "description": "user does not exits."
+                    }
+                }
+            }
+        }
+    }
+}
